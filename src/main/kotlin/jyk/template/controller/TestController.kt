@@ -1,5 +1,7 @@
 package jyk.template.controller
 
+import jyk.template.controller.dto.TestRequest
+import jyk.template.controller.dto.TestResponse
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
@@ -13,7 +15,3 @@ class TestController {
         return TestResponse(request.test.repeat(3))
     }
 }
-
-data class TestRequest(val test: String)
-
-data class TestResponse(val test: String)

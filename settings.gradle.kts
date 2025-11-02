@@ -1,1 +1,1 @@
-rootProject.name = "spring-kotlin-rest-template"
+rootProject.name = "jyk-server"
