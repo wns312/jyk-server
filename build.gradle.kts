@@ -8,8 +8,8 @@ plugins {
 }
 
 group = "jyk"
-version = "0.0.1-SNAPSHOT"
-description = "template"
+version = "0.0.1"
+description = "jyk-server for multi purpose"
 
 java {
 	toolchain {
@@ -24,23 +24,32 @@ repositories {
 extra["snippetsDir"] = file("build/generated-snippets")
 
 dependencies {
-//	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.boot:spring-boot-starter-webflux")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
+    // Spring MVC, Spring Boot
+	implementation("org.springframework.boot:spring-boot-starter-web")
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+    implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
+    // 코틀린 리플렉션을 위해 필요
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+
+    // Jackson
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+    // Devtools
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
-	runtimeOnly("com.mysql:mysql-connector-j")
+
+    // DB
+//	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+//	runtimeOnly("com.mysql:mysql-connector-j")
+
+
+    // Test
+    // Spring 환경에서의 단위 테스트, 통합 테스트, Mock 테스트를 모두 지원하는 "기본 스타터"
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("org.springframework.boot:spring-boot-testcontainers")
-	testImplementation("io.projectreactor:reactor-test")
-	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+    // 코루틴 테스트 지원을 위해 필요
 	testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test")
-	testImplementation("org.springframework.restdocs:spring-restdocs-webtestclient")
-	testImplementation("org.testcontainers:junit-jupiter")
-	testImplementation("org.testcontainers:mysql")
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
 }
 
 kotlin {
